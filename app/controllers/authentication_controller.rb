@@ -44,6 +44,7 @@ class AuthenticationController < ApplicationController
 
   def jwt_key
     Rails.application.credentials.jwt_key
+  end
 
   def encode_token(payload)
     JWT.encode(payload, jwt_key, 'HS256') # Replace 'yourSecretKey' with your secret key
