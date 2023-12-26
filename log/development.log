@@ -1,0 +1,386 @@
+  [1m[35m (108.5ms)[0m  [1m[35mCREATE DATABASE "rail_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (96.5ms)[0m  [1m[35mCREATE DATABASE "rail_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005413859020435610)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2023-12-26 03:13:44.534477', '2023-12-26 03:13:44.534481') RETURNING "key"[0m
+Migrating to CreateUsers (20231226031317)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231226031317') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005413859020435610)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/signup" for ::1 at 2023-12-26 11:17:37 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/signup"):
+  
+Started POST "/signup" for ::1 at 2023-12-26 11:17:59 +0800
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "user"=>{"username"=>"pengxuan"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f31149d9440>, params: {"username"=>"pengxuan", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"pengxuan"}} }[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Create (4.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "pengxuan"], ["password_digest", "[FILTERED]"], ["created_at", "2023-12-26 03:18:00.053045"], ["updated_at", "2023-12-26 03:18:00.053045"]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 200 OK in 318ms (Views: 0.5ms | ActiveRecord: 17.9ms | Allocations: 14550)
+
+
+Started POST "/login" for ::1 at 2023-12-26 11:18:13 +0800
+Processing by AuthenticationController#create as */*
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 282ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 4442)
+
+
+Started POST "/login" for ::1 at 2023-12-26 11:20:59 +0800
+Processing by AuthenticationController#create as */*
+  Parameters: {"username"=>"peng", "password"=>"[FILTERED]", "authentication"=>{"username"=>"peng", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "peng"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 401 Unauthorized in 4ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 489)
+
+
+Started OPTIONS "/login" for ::1 at 2023-12-26 13:46:39 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/login"):
+  
+Started OPTIONS "/login" for ::1 at 2023-12-26 13:46:47 +0800
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/login"):
+  
+Started OPTIONS "/login" for ::1 at 2023-12-26 13:48:04 +0800
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/login"):
+  
+Started POST "/login" for ::1 at 2023-12-26 13:51:46 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "authentication"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 401 Unauthorized in 57ms (Views: 0.3ms | ActiveRecord: 12.0ms | Allocations: 13219)
+
+
+Started POST "/login" for ::1 at 2023-12-26 13:51:57 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 287ms (Views: 0.5ms | ActiveRecord: 2.1ms | Allocations: 8703)
+
+
+Started POST "/login" for ::1 at 2023-12-26 13:53:10 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "authentication"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 401 Unauthorized in 44ms (Views: 0.4ms | ActiveRecord: 10.4ms | Allocations: 13220)
+
+
+Started POST "/login" for ::1 at 2023-12-26 13:53:19 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 285ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 8703)
+
+
+Started POST "/login" for ::1 at 2023-12-26 13:56:39 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"sd", "password"=>"[FILTERED]", "authentication"=>{"username"=>"sd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "sd"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 401 Unauthorized in 53ms (Views: 0.5ms | ActiveRecord: 8.3ms | Allocations: 13225)
+
+
+Started POST "/login" for ::1 at 2023-12-26 13:56:47 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 294ms (Views: 0.4ms | ActiveRecord: 2.3ms | Allocations: 10132)
+
+
+Started POST "/login" for ::1 at 2023-12-26 16:22:21 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 352ms (Views: 0.6ms | ActiveRecord: 15.2ms | Allocations: 21420)
+
+
+Started POST "/login" for ::1 at 2023-12-26 16:22:36 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 401 Unauthorized in 264ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 535)
+
+
+Started POST "/login" for ::1 at 2023-12-26 16:38:07 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 283ms (Views: 0.4ms | ActiveRecord: 6.0ms | Allocations: 3287)
+
+
+Started POST "/login" for ::1 at 2023-12-26 16:38:20 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 264ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 573)
+
+
+Started POST "/login" for ::1 at 2023-12-26 16:39:01 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 264ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 574)
+
+
+Started POST "/login" for ::1 at 2023-12-26 16:49:48 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 394ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 3278)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 16:49:51 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/authentication_controller.rb:20:in `validate'
+Started POST "/validate_token" for ::1 at 2023-12-26 16:49:51 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 87)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/authentication_controller.rb:20:in `validate'
+Started POST "/validate_token" for ::1 at 2023-12-26 16:55:37 +0800
+Started POST "/validate_token" for ::1 at 2023-12-26 16:55:37 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#validate as HTML
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2697)
+
+
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2794)
+
+
+  
+NoMethodError (undefined method `<' for nil:NilClass):
+  
+app/controllers/authentication_controller.rb:31:in `validate'
+  
+NoMethodError (undefined method `<' for nil:NilClass):
+  
+app/controllers/authentication_controller.rb:31:in `validate'
+Started POST "/validate_token" for ::1 at 2023-12-26 16:55:56 +0800
+Started POST "/validate_token" for ::1 at 2023-12-26 16:55:56 +0800
+Processing by AuthenticationController#validate as HTML
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 163)
+
+
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 102)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 16:57:04 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 102)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 16:57:04 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:00:09 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:00:09 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:00:33 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:00:33 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:00:52 +0800
+Started POST "/validate_token" for ::1 at 2023-12-26 17:00:52 +0800
+Processing by AuthenticationController#validate as HTML
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:05:15 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:05:15 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/login" for ::1 at 2023-12-26 17:05:22 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"sd", "password"=>"[FILTERED]", "authentication"=>{"username"=>"sd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "sd"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 401 Unauthorized in 45ms (Views: 0.6ms | ActiveRecord: 10.5ms | Allocations: 12363)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:05:25 +0800
+Processing by AuthenticationController#validate as HTML
+Started POST "/validate_token" for ::1 at 2023-12-26 17:05:25 +0800
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:07:39 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:07:44 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:07:45 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/login" for ::1 at 2023-12-26 17:14:11 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 316ms (Views: 0.5ms | ActiveRecord: 7.7ms | Allocations: 12733)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:14:14 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 102)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:14:14 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/login" for ::1 at 2023-12-26 17:20:26 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 274ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 3307)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:20:29 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 102)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:20:29 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/login" for ::1 at 2023-12-26 17:27:15 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 340ms (Views: 0.3ms | ActiveRecord: 12.0ms | Allocations: 21421)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:27:23 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms | Allocations: 235)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:27:23 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started POST "/validate_token" for ::1 at 2023-12-26 17:29:05 +0800
+Started POST "/validate_token" for ::1 at 2023-12-26 17:29:05 +0800
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 154)
+
+
+Processing by AuthenticationController#validate as HTML
+  Parameters: {"token"=>"[FILTERED]", "authentication"=>{"token"=>"[FILTERED]"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 154)
+
+
