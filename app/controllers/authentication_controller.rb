@@ -4,7 +4,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by(username: params[:username])
 
     if user && user.authenticate(params[:password])
-      token = encode_token(user_id: user.id, username: user.username)
+      token = encode_token(user_id: user.id)
       render json: { token: token }
     else
       render json: { error: 'Invalid username or password' }, status: :unauthorized
@@ -18,21 +18,21 @@ class AuthenticationController < ApplicationController
   end
 
   def validate
-    token = params[:authentication][:token]
-  
+    token = params[:token]
+
     begin
       decoded_token = JWT.decode(token, jwt_key, true, algorithm: 'HS256')
       # puts decoded_token
-  
+
       payload = decoded_token.first
       puts payload
-  
+
       # Check for additional conditions if needed
       # Example: Check for expiration
       # if payload['exp'] < Time.now.to_i
       #   return { error: 'Token has expired' }
       # end
-  
+
       # Return the decoded payload if everything is valid
       payload
     rescue JWT::DecodeError => e

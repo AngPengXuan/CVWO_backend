@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'posts/index'
+      post 'posts/create'
+      get '/show/:id', to: 'posts#show'
+      delete 'destroy/:id', to: 'posts#destroy'
+    end
+  end
   post '/login', to: 'authentication#create'
   delete '/logout', to: 'authentication#destroy'
   post '/signup', to: 'users#create'
