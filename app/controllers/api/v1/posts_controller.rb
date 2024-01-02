@@ -88,7 +88,12 @@ class Api::V1::PostsController < ApplicationController
     params.permit(:id, :token, post: {})
     @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
     @comments_json = @comments.as_json(only: [:id, :content, :created_at, :user_id]).map do |comment|
-      comment.merge("username" => User.find_by(id: comment["user_id"])&.username).merge("is_owner" => comment["user_id"] == current_user.id)
+      user = User.find_by(id: comment["user_id"])
+
+      comment.merge(
+        "username" => user&.username,
+        "is_owner" => (user&.id == current_user&.id) ? true : false
+      )
     end
     puts @comments_json
   end
