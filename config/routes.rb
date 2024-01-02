@@ -3,9 +3,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'posts/index'
       post 'posts/create'
+      post 'comments/create'
       post 'show/:id', to: 'posts#show'
       delete 'destroy/:id', to: 'posts#destroy'
+      delete 'comment/destroy/:id', to: 'comments#destroy'
       patch 'update/:id', to: 'posts#update'
+      patch 'comment/update/:id', to: 'comments#update'
     end
   end
   post '/login', to: 'authentication#create'
