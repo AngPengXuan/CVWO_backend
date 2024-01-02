@@ -32,8 +32,9 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def show
+    user = User.find_by(id: @post["user_id"])
     render json: {
-      post: @post,
+      post: @post.as_json.merge("username" => user&.username),
       comments: @comments_json,
       is_owner: current_user_is_owner?
     }
