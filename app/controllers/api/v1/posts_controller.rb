@@ -1,6 +1,7 @@
 class Api::V1::PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy update]
   before_action :authenticate_user, only: %i[show create update destroy]
+  before_action :set_comments, only: %i[show]
 
   def index
     posts = Post.all.order(created_at: :desc)
@@ -33,6 +34,7 @@ class Api::V1::PostsController < ApplicationController
   def show
     render json: {
       post: @post,
+      comments: @comments_json,
       is_owner: current_user_is_owner?
     }
   end
@@ -52,10 +54,12 @@ class Api::V1::PostsController < ApplicationController
     if decoded_token && decoded_token[0] && decoded_token[0]['user_id']
       @current_user = User.find_by(id: decoded_token[0]['user_id'])
     else
-      render json: { error: 'User ID not found in the decoded token' }, status: :unprocessable_entity
+      @current_user = nil
+      # render json: { error: 'User ID not found in the decoded token' }, status: :unprocessable_entity
     end
   rescue JWT::DecodeError => e
-    render json: { error: e.message }, status: :unprocessable_entity
+    @current_user = nil
+    # render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def jwt_key
@@ -67,7 +71,11 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :category, :content).merge(user_id: current_user.id)
+    if current_user != nil
+      params.require(:post).permit(:title, :category, :content).merge(user_id: current_user.id)
+    else
+      params.require(:post).permit(:title, :category, :content).merge(user_id: nil)
+    end
   end
 
   def set_post
@@ -76,7 +84,20 @@ class Api::V1::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def set_comments
+    params.permit(:id, :token, post: {})
+    @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
+    @comments_json = @comments.as_json(only: [:id, :content, :created_at, :user_id]).map do |comment|
+      comment.merge("username" => User.find_by(id: comment["user_id"])&.username).merge("is_owner" => comment["user_id"] == current_user.id)
+    end
+    puts @comments_json
+  end
+
   def current_user_is_owner?
-    @post.user_id == current_user.id
+    if current_user != nil
+      @post.user_id == current_user.id
+    else
+      return false
+    end
   end
 end
