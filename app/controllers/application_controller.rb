@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
   def index
-    puts "Successful"
+    puts "Successful Connection"
   end
 end
