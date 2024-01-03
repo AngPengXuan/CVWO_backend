@@ -1,24 +1,37 @@
-# README
+# CVWO assignment backend (Work in Progress)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A minimal implementation of the assignment, a forum that users can register and login, and perform basic CRUD operations for forum threads and comments.
 
-Things you may want to cover:
+The backend has been deployed using Render: [https://cvwo-backend-2voo.onrender.com](https://cvwo-backend-2voo.onrender.com)
 
-* Ruby version
+Note: as the backend is only a API application, the link above does not show anything.
 
-* System dependencies
+## Getting Started
 
-* Configuration
+### Running the app
+1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) this repo.
+2. [Clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository) **your** forked repo.
+3. Open your terminal and navigate to the directory containing your cloned project.
+4. Install dependencies for the project by entering this command:
 
-* Database creation
+```bash
+bundle install
+```
+5. Run the app in development mode by entering this command:
 
-* Database initialization
+```bash
+rails server
+```
 
-* How to run the test suite
+6. The server will be hosted here: [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Additional Notes
+-   This project uses [Ruby on Rails](https://rubyonrails.org/).
 
-* Deployment instructions
+## Acknowledgements
 
-* ...
+Part of the following tutorials were followed during the implementation of the backend:
+
+1. [rails-api-jwt-authentication](https://medium.com/binar-academy/rails-api-jwt-authentication-a04503ea3248)
+2. [How To Set Up a Ruby on Rails v7 Project with a React Frontend on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-ruby-on-rails-v7-project-with-a-react-frontend-on-ubuntu-20-04)
+
