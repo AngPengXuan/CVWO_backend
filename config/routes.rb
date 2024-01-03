@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   post '/login', to: 'authentication#create'
   delete '/logout', to: 'authentication#destroy'
-  post '/signup', to: 'users#create'
+  post '/register', to: 'users#create'
   post '/validate_token', to: 'authentication#validate'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,9 +1,9 @@
 # app/controllers/authentication_controller.rb
 class AuthenticationController < ApplicationController
   def create
-    user = User.find_by(username: params[:username])
+    user = User.find_by(username: user_params[:username])
 
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(user_params[:password])
       token = encode_token(user_id: user.id)
       render json: { token: token }
     else
@@ -41,6 +41,10 @@ class AuthenticationController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
 
   def jwt_key
     Rails.application.credentials.jwt_key
