@@ -28445,3 +28445,1320 @@ Processing by Api::V1::PostsController#index as */*
 Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 2205)
 
 
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:16 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (2.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 151ms (Views: 5.1ms | ActiveRecord: 30.0ms | Allocations: 33305)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:16 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 53ms (Views: 0.8ms | ActiveRecord: 1.3ms | Allocations: 2210)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:15:19 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:15:19 +0800
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 40ms (Views: 0.3ms | ActiveRecord: 7.7ms | Allocations: 12241)
+
+
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 12.5ms | Allocations: 10244)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:21 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 1.3ms | Allocations: 2219)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:21 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 9ms (Views: 0.8ms | ActiveRecord: 1.4ms | Allocations: 2205)
+
+
+Started POST "/signup" for ::1 at 2024-01-03 08:15:26 +0800
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"why", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Create (12.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "why"], ["password_digest", "[FILTERED]"], ["created_at", "2024-01-03 00:15:27.171104"], ["updated_at", "2024-01-03 00:15:27.171104"]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 200 OK in 280ms (Views: 0.2ms | ActiveRecord: 14.0ms | Allocations: 2662)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:27 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 11ms (Views: 1.9ms | ActiveRecord: 1.8ms | Allocations: 2206)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:27 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 1.3ms | Allocations: 2205)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:29 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 1.4ms | Allocations: 2205)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 08:15:29 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 1.0ms | Allocations: 2205)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:24:26 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:24:26 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 6.4ms | Allocations: 9462)
+
+
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 8.8ms | Allocations: 8813)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:25:50 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2046)
+
+
+Started GET "/api/v1/show/$%7Bparams.id%7D" for ::1 at 2024-01-03 08:35:43 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/show/$%7Bparams.id%7D"):
+  
+Started GET "/favicon.ico" for ::1 at 2024-01-03 08:35:43 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:36:03 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 4829)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:37:36 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2045)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:38:17 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 2044)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 08:59:29 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 4.8ms | Allocations: 4805)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:15:48 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:15:48 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 8.1ms | Allocations: 9230)
+
+
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 8.1ms | Allocations: 8542)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:16:08 +0800
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:16:08 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+Processing by Api::V1::PostsController#show as */*
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 3742)
+
+
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 3909)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:16:38 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:16:38 +0800
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 2494)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 2045)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:17:08 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 2045)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:17:16 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:17:16 +0800
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 2412)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2044)
+
+
+Started POST "/login" for ::1 at 2024-01-03 09:17:29 +0800
+Processing by AuthenticationController#create as HTML
+  Parameters: {"username"=>"pengxuan", "password"=>"[FILTERED]", "authentication"=>{"username"=>"pengxuan", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pengxuan"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:4:in `create'
+Completed 200 OK in 222ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 742)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 09:17:29 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 2205)
+
+
+Started GET "/api/v1/posts/index" for ::1 at 2024-01-03 09:17:29 +0800
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:8:in `map'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:9:in `block in index'
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 1.4ms | Allocations: 2205)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:17:31 +0800
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:17:31 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+Processing by Api::V1::PostsController#show as */*
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 1.5ms | Allocations: 4519)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 4420)
+
+
+Started POST "/api/v1/comments/create" for ::1 at 2024-01-03 09:17:34 +0800
+Processing by Api::V1::CommentsController#create as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test", "post_id"=>"30"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (1.8ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "post_id", "content", "like_count", "dislike_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["post_id", 30], ["content", "test"], ["like_count", 0], ["dislike_count", 0], ["created_at", "2024-01-03 01:17:34.560966"], ["updated_at", "2024-01-03 01:17:34.560966"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+Completed 204 No Content in 23ms (ActiveRecord: 3.8ms | Allocations: 5812)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:17:34 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2786)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:18:28 +0800
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:18:28 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+Processing by Api::V1::PostsController#show as */*
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 4017)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 4012)
+
+
+Started DELETE "/api/v1/comment/destroy/30" for ::1 at 2024-01-03 09:20:35 +0800
+Processing by Api::V1::CommentsController#destroy as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"id"=>37}, "id"=>"30"}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mComment Destroy (2.6ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 37]]
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 5.4ms | Allocations: 1911)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:20:35 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 2418)
+
+
+Started POST "/api/v1/comments/create" for ::1 at 2024-01-03 09:20:40 +0800
+Processing by Api::V1::CommentsController#create as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test", "post_id"=>"30"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "post_id", "content", "like_count", "dislike_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["post_id", 30], ["content", "test"], ["like_count", 0], ["dislike_count", 0], ["created_at", "2024-01-03 01:20:40.476281"], ["updated_at", "2024-01-03 01:20:40.476281"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+Completed 204 No Content in 18ms (ActiveRecord: 10.9ms | Allocations: 3822)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:20:40 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 17ms (Views: 0.4ms | ActiveRecord: 1.5ms | Allocations: 2786)
+
+
+Started DELETE "/api/v1/comment/destroy/30" for ::1 at 2024-01-03 09:21:12 +0800
+Processing by Api::V1::CommentsController#destroy as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"id"=>38}, "id"=>"30"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mComment Destroy (1.5ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 38]]
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 13.1ms | Allocations: 1678)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:21:12 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2418)
+
+
+Started PATCH "/api/v1/comment/update/30" for ::1 at 2024-01-03 09:25:18 +0800
+Processing by Api::V1::CommentsController#update as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test", "id"=>38}, "id"=>"30"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:18:in `update'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.5ms | Allocations: 1106)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'=38):
+  
+app/controllers/api/v1/comments_controller.rb:18:in `update'
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:25:18 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 2417)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:27:39 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:27:39 +0800
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 2742)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2417)
+
+
+Started GET "/api/v1/comment/update/$%7Bparams.id%7D" for ::1 at 2024-01-03 09:28:48 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/comment/update/$%7Bparams.id%7D"):
+  
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:31:00 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2417)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:33:40 +0800
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:33:40 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 39ms (Views: 0.3ms | ActiveRecord: 11.6ms | Allocations: 13463)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 7.0ms | Allocations: 13380)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:35:56 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2420)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:36:27 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:36:27 +0800
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 2810)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 2418)
+
+
+Started PATCH "/api/v1/comment/update" for ::1 at 2024-01-03 09:36:34 +0800
+Processing by Api::V1::CommentsController#update as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"yes!!!", "id"=>34}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+  [1m[36mComment Update (1.1ms)[0m  [1m[33mUPDATE "comments" SET "content" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["content", "yes!!!"], ["updated_at", "2024-01-03 01:36:34.088692"], ["id", 34]]
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+Completed 204 No Content in 12ms (ActiveRecord: 3.9ms | Allocations: 3076)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:36:34 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 2418)
+
+
+Started POST "/api/v1/comments/create" for ::1 at 2024-01-03 09:36:44 +0800
+Processing by Api::V1::CommentsController#create as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test", "post_id"=>"30"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "post_id", "content", "like_count", "dislike_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["post_id", 30], ["content", "test"], ["like_count", 0], ["dislike_count", 0], ["created_at", "2024-01-03 01:36:44.877889"], ["updated_at", "2024-01-03 01:36:44.877889"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+Completed 204 No Content in 24ms (ActiveRecord: 11.4ms | Allocations: 4428)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:36:44 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 2786)
+
+
+Started DELETE "/api/v1/comment/destroy/30" for ::1 at 2024-01-03 09:36:46 +0800
+Processing by Api::V1::CommentsController#destroy as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"id"=>39}, "id"=>"30"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mComment Destroy (17.9ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 39]]
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+Completed 200 OK in 34ms (Views: 0.5ms | ActiveRecord: 27.7ms | Allocations: 1714)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:36:46 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2418)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:30 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 41ms (Views: 0.2ms | ActiveRecord: 9.6ms | Allocations: 13442)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:31 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:31 +0800
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 14ms (Views: 0.7ms | ActiveRecord: 1.1ms | Allocations: 2762)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2418)
+
+
+Started POST "/api/v1/comments/create" for ::1 at 2024-01-03 09:38:33 +0800
+Processing by Api::V1::CommentsController#create as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test", "post_id"=>"30"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (1.7ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "post_id", "content", "like_count", "dislike_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["post_id", 30], ["content", "test"], ["like_count", 0], ["dislike_count", 0], ["created_at", "2024-01-03 01:38:33.570310"], ["updated_at", "2024-01-03 01:38:33.570310"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+Completed 204 No Content in 28ms (ActiveRecord: 13.3ms | Allocations: 4660)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:33 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 2786)
+
+
+Started DELETE "/api/v1/comment/destroy" for ::1 at 2024-01-03 09:38:35 +0800
+Processing by Api::V1::CommentsController#destroy as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"id"=>40}}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mComment Destroy (2.8ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 40]]
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 5.3ms | Allocations: 1832)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:35 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 2419)
+
+
+Started POST "/api/v1/comments/create" for ::1 at 2024-01-03 09:38:38 +0800
+Processing by Api::V1::CommentsController#create as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"testttt", "post_id"=>"30"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "post_id", "content", "like_count", "dislike_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["post_id", 30], ["content", "testttt"], ["like_count", 0], ["dislike_count", 0], ["created_at", "2024-01-03 01:38:38.866017"], ["updated_at", "2024-01-03 01:38:38.866017"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+Completed 204 No Content in 21ms (ActiveRecord: 11.9ms | Allocations: 3819)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:38 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2787)
+
+
+Started DELETE "/api/v1/comment/destroy" for ::1 at 2024-01-03 09:38:41 +0800
+Processing by Api::V1::CommentsController#destroy as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"id"=>41}}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mComment Destroy (2.1ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 41]]
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:25:in `destroy'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 13.6ms | Allocations: 1678)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:41 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2418)
+
+
+Started POST "/api/v1/comments/create" for ::1 at 2024-01-03 09:38:43 +0800
+Processing by Api::V1::CommentsController#create as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test", "post_id"=>"30"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "post_id", "content", "like_count", "dislike_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["post_id", 30], ["content", "test"], ["like_count", 0], ["dislike_count", 0], ["created_at", "2024-01-03 01:38:43.954378"], ["updated_at", "2024-01-03 01:38:43.954378"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:14:in `create'
+Completed 204 No Content in 27ms (ActiveRecord: 12.1ms | Allocations: 3819)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:43 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2786)
+
+
+Started PATCH "/api/v1/comment/update" for ::1 at 2024-01-03 09:38:47 +0800
+Processing by Api::V1::CommentsController#update as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test hi", "id"=>42}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+  [1m[36mComment Update (1.3ms)[0m  [1m[33mUPDATE "comments" SET "content" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["content", "test hi"], ["updated_at", "2024-01-03 01:38:47.355057"], ["id", 42]]
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+Completed 204 No Content in 20ms (ActiveRecord: 11.5ms | Allocations: 2613)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:38:47 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 2786)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:39:01 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2786)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:39:39 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:39:39 +0800
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 3236)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 2786)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:39:46 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2786)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:40:27 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 2786)
+
+
+Started PATCH "/api/v1/update/30" for ::1 at 2024-01-03 09:40:58 +0800
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"token"=>"[FILTERED]", "post"=>{"title"=>"CRUD is working!!! s", "category"=>"something s", "content"=>"it is finally working s"}, "id"=>"30"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:27:in `update'
+  [1m[36mPost Update (1.5ms)[0m  [1m[33mUPDATE "posts" SET "title" = $1, "content" = $2, "category" = $3, "updated_at" = $4 WHERE "posts"."id" = $5[0m  [["title", "CRUD is working!!! s"], ["content", "it is finally working s"], ["category", "something s"], ["updated_at", "2024-01-03 01:40:58.381017"], ["id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 3.2ms | Allocations: 3003)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:40:58 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 2787)
+
+
+Started PATCH "/api/v1/comment/update" for ::1 at 2024-01-03 09:41:04 +0800
+Processing by Api::V1::CommentsController#update as */*
+  Parameters: {"token"=>"[FILTERED]", "comment"=>{"content"=>"test hi hi", "id"=>42}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:41:in `authenticate_user'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+  [1m[36mComment Update (2.4ms)[0m  [1m[33mUPDATE "comments" SET "content" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["content", "test hi hi"], ["updated_at", "2024-01-03 01:41:04.191317"], ["id", 42]]
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:20:in `update'
+Completed 204 No Content in 11ms (ActiveRecord: 4.3ms | Allocations: 2583)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:41:04 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2786)
+
+
+Started POST "/api/v1/show/30" for ::1 at 2024-01-03 09:42:58 +0800
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"token"=>"[FILTERED]", "id"=>"30", "post"=>{}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:85:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:56:in `authenticate_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 30]]
+  ↳ app/controllers/api/v1/posts_controller.rb:91:in `set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:92:in `block in set_comments'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `show'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 2786)
+
+
