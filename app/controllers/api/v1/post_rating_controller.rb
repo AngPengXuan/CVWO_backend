@@ -58,11 +58,16 @@ class Api::V1::PostRatingController < ApplicationController
 
   def set_post_rating
     token = params[:post_rating].delete(:user_token)
-    decoded_token = JWT.decode(token, jwt_key, true, algorithm: 'HS256')
-    user_id_from_token = decoded_token.first["user_id"]
-    @post_rating = PostRating.find_by(user_id: user_id_from_token, post_id: params[:post_rating][:post_id])
-    # Add user_id back to params
-    params[:post_rating][:user_id] = user_id_from_token
+    #need check for existence of token, possibility that user is not logged in.
+    if token.present?
+      decoded_token = JWT.decode(token, jwt_key, true, algorithm: 'HS256')
+      user_id_from_token = decoded_token.first["user_id"]
+      @post_rating = PostRating.find_by(user_id: user_id_from_token, post_id: params[:post_rating][:post_id])
+      # Add user_id back to params
+      params[:post_rating][:user_id] = user_id_from_token
+    else
+      @post_rating = PostRating.find_by(post_id: params[:post_rating][:post_id])
+    end
   end
 
   def jwt_key

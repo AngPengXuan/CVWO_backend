@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
     def create
+      check_user = User.find_by(username: params[:user][:username])
+      if check_user
+        render json: {error: "username was used", statusText: "username used"}, status: :unprocessable_entity
+        return
+      end
       user = User.new(user_params)
 
       if user.save
