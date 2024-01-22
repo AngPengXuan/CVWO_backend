@@ -5,11 +5,23 @@ class Api::V1::PostsController < ApplicationController
 
   def index
     posts = Post.all.order(created_at: :desc)
-    posts_with_username = posts.map do |post|
-      {post: post, username: User.find_by(id: post.user_id)&.username}
+    # #find post_rating and add on
+    # #check user exist in rating, then what rating given
+    # posts_with_username = posts.map do |post|
+    #   {post: post, username: User.find_by(id: post.user_id)&.username}
+    # end
+
+    # render json: posts_with_username
+    # posts = Post.all.order(created_at: :desc)
+    posts_with_ratings = posts.map do |post|
+      {
+        post: post,
+        username: User.find_by(id: post.user_id)&.username,
+        ratings: post.post_ratings.map { |rating| { user_id: rating.user_id, rating: rating.rating } }
+      }
     end
 
-    render json: posts_with_username
+    render json: posts_with_ratings
   end
 
   def create
@@ -17,7 +29,9 @@ class Api::V1::PostsController < ApplicationController
     post = Post.create!(post_params)
 
     if post
-      render json: post
+      # Create associated post rating for the current user
+      post_rating = @current_user.post_ratings.create(post: post, rating: 0)
+      render json: { post: post, post_rating: post_rating }
     else
       render json: { error: post.errors.full_messages }, status: :unprocessable_entity
     end
@@ -31,16 +45,33 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
+  # def show
+  #   user = User.find_by(id: @post["user_id"])
+
+  #   render json: {
+  #     post: @post.as_json.merge("username" => user&.username),
+  #     comments: @comments_json,
+  #     is_owner: current_user_is_owner?
+  #   }
+  # end
+
   def show
-    user = User.find_by(id: @post["user_id"])
+    user = User.find_by(id: @post.user_id)
+    ratings = @post.post_ratings.map { |rating| { user_id: rating.user_id, rating: rating.rating } }
+
     render json: {
       post: @post.as_json.merge("username" => user&.username),
       comments: @comments_json,
+      ratings: ratings,
       is_owner: current_user_is_owner?
     }
   end
 
   def destroy
+    comments = Comment.where(post_id: params[:id])
+    comments.destroy_all
+    post_ratings = PostRating.where(post_id: params[:id])
+    post_ratings.destroy_all
     @post.destroy
     render json: { message: 'Post deleted' }
   end

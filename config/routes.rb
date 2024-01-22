@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      #get 'post_rating/create'
       get 'posts/index'
+      # post 'post_rating/create'#, to: 'post_rating#display'
       post 'posts/create'
       post 'comments/create'
       post 'show/:id', to: 'posts#show'
@@ -9,6 +11,9 @@ Rails.application.routes.draw do
       delete 'comment/destroy', to: 'comments#destroy'
       patch 'update/:id', to: 'posts#update'
       patch 'comment/update', to: 'comments#update'
+      patch 'post_rating/update', to: 'post_rating#update'
+      post 'post_rating/show', to: 'post_rating#show'
+      # post 'post_rating/show_all', to: 'post_rating#show_all'
     end
   end
   post '/login', to: 'authentication#create'
