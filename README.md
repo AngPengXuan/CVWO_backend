@@ -1,4 +1,4 @@
-# CVWO assignment backend (Work in Progress)
+# CVWO assignment backend
 
 A minimal implementation of the assignment, a forum that users can register and login, and perform basic CRUD operations for forum threads and comments.
 
