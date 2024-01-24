@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       patch 'comment/update', to: 'comments#update'
       patch 'post_rating/update', to: 'post_rating#update'
       post 'post_rating/show', to: 'post_rating#show'
+      patch 'comment_rating/update', to: 'comment_rating#update'
+      post 'comment_rating/show', to: 'comment_rating#show'
       # post 'post_rating/show_all', to: 'post_rating#show_all'
     end
   end

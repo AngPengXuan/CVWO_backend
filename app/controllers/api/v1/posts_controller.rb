@@ -121,10 +121,12 @@ class Api::V1::PostsController < ApplicationController
     @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
     @comments_json = @comments.as_json(only: [:id, :content, :created_at, :user_id]).map do |comment|
       user = User.find_by(id: comment["user_id"])
+      comment_ratings = CommentRating.where(comment_id: comment["id"])
 
       comment.merge(
         "username" => user&.username,
-        "is_owner" => (user&.id == current_user&.id) ? true : false
+        "is_owner" => (user&.id == current_user&.id) ? true : false,
+        "comment_ratings" => comment_ratings.as_json()
       )
     end
     puts @comments_json

@@ -21,8 +21,10 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def destroy
-    update_comment = Comment.find(params[:comment][:id])
-    update_comment.destroy
+    comment_rating = CommentRating.where(comment_id: params[:comment][:id])
+    comment_rating.destroy_all
+    comment = Comment.find(params[:comment][:id])
+    comment.destroy
     render json: { message: 'Post deleted' }
   end
 
