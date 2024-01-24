@@ -32,7 +32,7 @@ rails server
 7. The server will be hosted here: [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Additional Notes
--   This project uses [Ruby on Rails](https://rubyonrails.org/).
+-   This project uses [Ruby on Rails](https://rubyonrails.org/) and [PostgreSQL](https://www.postgresql.org/).
 
 ## Acknowledgements
 
