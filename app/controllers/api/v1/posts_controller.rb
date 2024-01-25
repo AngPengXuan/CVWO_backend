@@ -1,18 +1,12 @@
 class Api::V1::PostsController < ApplicationController
+  # Sets post and comments, and authenticate users before certain paths
   before_action :set_post, only: %i[show destroy update]
   before_action :authenticate_user, only: %i[show create update destroy]
   before_action :set_comments, only: %i[show]
 
+  # Returns all the posts/threads
   def index
     posts = Post.all.order(created_at: :desc)
-    # #find post_rating and add on
-    # #check user exist in rating, then what rating given
-    # posts_with_username = posts.map do |post|
-    #   {post: post, username: User.find_by(id: post.user_id)&.username}
-    # end
-
-    # render json: posts_with_username
-    # posts = Post.all.order(created_at: :desc)
     posts_with_ratings = posts.map do |post|
       {
         post: post,
@@ -24,6 +18,7 @@ class Api::V1::PostsController < ApplicationController
     render json: posts_with_ratings
   end
 
+  # Creation of post/thread
   def create
     puts post_params
     post = Post.create!(post_params)
@@ -37,6 +32,7 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
+  # Updating of post/thread
   def update
     if @post.update(post_params)
       render json: @post
@@ -45,16 +41,7 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
-  # def show
-  #   user = User.find_by(id: @post["user_id"])
-
-  #   render json: {
-  #     post: @post.as_json.merge("username" => user&.username),
-  #     comments: @comments_json,
-  #     is_owner: current_user_is_owner?
-  #   }
-  # end
-
+  # Showing a single post/thread with comments
   def show
     user = User.find_by(id: @post.user_id)
     ratings = @post.post_ratings.map { |rating| { user_id: rating.user_id, rating: rating.rating } }
@@ -67,8 +54,12 @@ class Api::V1::PostsController < ApplicationController
     }
   end
 
+  # Destroying the post/thread with associated comments and ratings
   def destroy
     comments = Comment.where(post_id: params[:id])
+    comment_ids = comments.pluck(:id)
+    comment_ratings = CommentRating.where(comment_id: comment_ids)
+    comment_ratings.destroy_all
     comments.destroy_all
     post_ratings = PostRating.where(post_id: params[:id])
     post_ratings.destroy_all
@@ -78,6 +69,7 @@ class Api::V1::PostsController < ApplicationController
 
   private
 
+  # Authenticate the user
   def authenticate_user
     params.permit(:token, :id, post:{})
     token = params[:token]
@@ -87,21 +79,22 @@ class Api::V1::PostsController < ApplicationController
       @current_user = User.find_by(id: decoded_token[0]['user_id'])
     else
       @current_user = nil
-      # render json: { error: 'User ID not found in the decoded token' }, status: :unprocessable_entity
     end
   rescue JWT::DecodeError => e
     @current_user = nil
-    # render json: { error: e.message }, status: :unprocessable_entity
   end
 
+  # Gets the jwt_key
   def jwt_key
     Rails.application.credentials.jwt_key
   end
 
+  # Sets the current user
   def current_user
     @current_user
   end
 
+  # Sets the post parameters
   def post_params
     if current_user != nil
       params.require(:post).permit(:title, :category, :content).merge(user_id: current_user.id)
@@ -110,12 +103,14 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
+  # Sets the current post/thread
   def set_post
     params.permit(:id, :token, post: {})
     puts "set"
     @post = Post.find(params[:id])
   end
 
+  # Set the comments associated with the post/thread
   def set_comments
     params.permit(:id, :token, post: {})
     @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
@@ -132,6 +127,7 @@ class Api::V1::PostsController < ApplicationController
     puts @comments_json
   end
 
+  # Checks if the current user is owner of the post/thread
   def current_user_is_owner?
     if current_user != nil
       @post.user_id == current_user.id

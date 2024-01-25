@@ -1,6 +1,7 @@
 class Api::V1::CommentRatingController < ApplicationController
   before_action :set_comment_rating, only: [:show, :update]
 
+  # Show comment ratings
   def show
     comment_ratings = CommentRating.where(comment_id: params[:comment_rating][:comment_id])
     user_rating = CommentRating.find_by(user_id: params[:comment_rating][:user_id], comment_id: params[:comment_rating][:comment_id])
@@ -13,6 +14,7 @@ class Api::V1::CommentRatingController < ApplicationController
     render json: response_data
   end
 
+  # Create and update comment ratings
   def update
     if @comment_rating.nil?
       # If the comment rating doesn't exist, create a new one
@@ -42,10 +44,12 @@ class Api::V1::CommentRatingController < ApplicationController
 
   private
 
+  # Set the necessary parameters required for comments
   def comment_rating_params
     params.require(:comment_rating).permit(:user_token, :comment_id, :rating, :user_id)
   end
 
+  # Set the comment rating
   def set_comment_rating
     token = params[:comment_rating].delete(:user_token)
     #need check for existence of token, possibility that user is not logged in.
@@ -60,6 +64,7 @@ class Api::V1::CommentRatingController < ApplicationController
     end
   end
 
+  # Set jwt key
   def jwt_key
     Rails.application.credentials.jwt_key
   end

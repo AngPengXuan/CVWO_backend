@@ -15,7 +15,6 @@ Rails.application.routes.draw do
       post 'post_rating/show', to: 'post_rating#show'
       patch 'comment_rating/update', to: 'comment_rating#update'
       post 'comment_rating/show', to: 'comment_rating#show'
-      # post 'post_rating/show_all', to: 'post_rating#show_all'
     end
   end
   post '/login', to: 'authentication#create'

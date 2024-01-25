@@ -1,5 +1,7 @@
 # app/controllers/authentication_controller.rb
 class AuthenticationController < ApplicationController
+
+  # Creation of token
   def create
     user = User.find_by(username: user_params[:username])
 
@@ -11,12 +13,14 @@ class AuthenticationController < ApplicationController
     end
   end
 
+  # Destroys the token
   def destroy
     # Log out functionality (optional for JWT)
     # If you have a frontend, clearing the token from client-side is enough
     render json: { message: 'Logged out successfully' }
   end
 
+  # Validates the token
   def validate
     token = params[:token]
 
@@ -42,14 +46,17 @@ class AuthenticationController < ApplicationController
 
   private
 
+  # Sets parameters required
   def user_params
     params.require(:user).permit(:username, :password)
   end
 
+  # Sets jwt key
   def jwt_key
     Rails.application.credentials.jwt_key
   end
 
+  # Encodes the token
   def encode_token(payload)
     JWT.encode(payload, jwt_key, 'HS256') # Replace 'yourSecretKey' with your secret key
   end

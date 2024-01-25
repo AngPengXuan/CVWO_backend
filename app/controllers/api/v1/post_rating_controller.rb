@@ -1,16 +1,7 @@
 class Api::V1::PostRatingController < ApplicationController
   before_action :set_post_rating, only: [:show, :update]
 
-  def create
-    @post_rating = PostRating.new(post_rating_params)
-
-    if @post_rating.save
-      render json: @post_rating, status: :created
-    else
-      render json: @post_rating.errors, status: :unprocessable_entity
-    end
-  end
-
+  # Shows the post/thread rating
   def show
     post_ratings = PostRating.where(post_id: params[:post_rating][:post_id])
     user_rating = PostRating.find_by(user_id: params[:post_rating][:user_id], post_id: params[:post_rating][:post_id])
@@ -23,6 +14,7 @@ class Api::V1::PostRatingController < ApplicationController
     render json: response_data
   end
 
+  # Creates and update the post/thread rating
   def update
     if @post_rating.nil?
       # If the post rating doesn't exist, create a new one
@@ -41,7 +33,6 @@ class Api::V1::PostRatingController < ApplicationController
       puts sum
       if @post_rating.update(post_rating_params)
         post = Post.find_by(id: params[:post_rating][:post_id])
-        # puts post.like_count
         post.update(like_count: post.like_count + sum)
         render json: @post_rating, status: :ok
       else
@@ -52,10 +43,12 @@ class Api::V1::PostRatingController < ApplicationController
 
   private
 
+  # Sets the parameters for post rating
   def post_rating_params
     params.require(:post_rating).permit(:user_token, :post_id, :rating, :user_id)
   end
 
+  # Sets the post/thread ratings
   def set_post_rating
     token = params[:post_rating].delete(:user_token)
     #need check for existence of token, possibility that user is not logged in.
@@ -70,6 +63,7 @@ class Api::V1::PostRatingController < ApplicationController
     end
   end
 
+  # Sets the jwt key
   def jwt_key
     Rails.application.credentials.jwt_key
   end
