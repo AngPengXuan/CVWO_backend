@@ -1,4 +1,4 @@
-# CVWO assignment backend (Work in Progress)
+# CVWO assignment backend
 
 A minimal implementation of the assignment, a forum that users can register and login, and perform basic CRUD operations for forum threads and comments.
 
@@ -17,16 +17,22 @@ Note: as the backend is only a API application, the link above does not show any
 ```bash
 bundle install
 ```
-5. Run the app in development mode by entering this command:
+
+5. Migrate the database:
+```
+rails db:migrate
+```
+
+6. Run the app in development mode by entering this command:
 
 ```bash
 rails server
 ```
 
-6. The server will be hosted here: [http://localhost:3000](http://localhost:3000) to view it in the browser.
+7. The server will be hosted here: [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Additional Notes
--   This project uses [Ruby on Rails](https://rubyonrails.org/).
+-   This project uses [Ruby on Rails](https://rubyonrails.org/) and [PostgreSQL](https://www.postgresql.org/).
 
 ## Acknowledgements
 
